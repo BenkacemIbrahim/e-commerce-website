@@ -1,12 +1,14 @@
 {
-  "name": "my-v0-project",
+  "name": "aethercart-frontend",
   "version": "0.1.0",
+  "description": "AetherCart storefront and admin dashboard built with Next.js.",
   "private": true,
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "npm run typecheck"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

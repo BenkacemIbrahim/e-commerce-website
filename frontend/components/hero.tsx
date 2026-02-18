@@ -43,7 +43,7 @@ export function Hero() {
                 <div className="text-sm text-muted-foreground">Top Brands</div>
               </div>
               <div>
-                <div className="text-3xl font-bold font-serif">4.9★</div>
+                <div className="text-3xl font-bold font-serif">4.9</div>
                 <div className="text-sm text-muted-foreground">Customer Rating</div>
               </div>
             </div>
@@ -51,18 +51,13 @@ export function Hero() {
 
           <div className="relative">
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src="/hero-sneakers-collection.jpg"
-                alt="Hero Collection"
-                className="w-full h-full object-cover"
-                query="premium stylish sneakers collection on display"
-              />
+              <img src="/hero-sneakers-collection.jpg" alt="Hero Collection" className="w-full h-full object-cover" />
             </div>
 
             <div className="absolute -bottom-8 -left-8 bg-card border border-border/50 rounded-2xl p-6 shadow-2xl backdrop-blur-sm hidden lg:block">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center">
-                  <span className="text-2xl">🔥</span>
+                  <span className="text-sm font-semibold">HOT</span>
                 </div>
                 <div>
                   <div className="font-semibold">Hot This Season</div>

@@ -1,83 +1,106 @@
-# E‑Commerce Website
+# AetherCart
 
-Full‑stack e‑commerce application with a modern Next.js frontend and a TypeScript/Express/MongoDB backend. This repository contains two apps:
+AetherCart is a full-stack e-commerce project with a polished storefront UI, admin dashboard experience, and a production-style REST API.
 
-- `frontend`: Next.js 16 app with a customer storefront and admin UI
-- `backend`: Express API in TypeScript with JWT auth and MongoDB via Mongoose
+This repository contains:
+- `frontend`: Next.js 16 + React 19 storefront and admin interface
+- `backend`: Express + TypeScript + MongoDB API with JWT authentication
+
+## Features
+- Multi-page storefront (home, category pages, product details, sale, cart, wishlist)
+- Admin dashboard UX for products, orders, customers, categories, analytics, and settings
+- Backend API modules for auth, catalog, cart, wishlist, orders, and admin analytics
+- JWT access + refresh token workflow
+- Zod validation and centralized API error handling
+- Seed script for fast local setup
+
+Note: the current admin UI in `frontend` uses mock data and local session logic for demo UX. The `backend` provides real API endpoints and can be integrated as the next step.
 
 ## Tech Stack
-- Frontend: `Next.js 16`, `React 19`, `TypeScript`, `Tailwind CSS`, `Radix UI`, `shadcn/ui`
-- Backend: `Node.js`, `Express`, `TypeScript`, `Mongoose`, `JWT`, `Zod`
-- Tooling: `pnpm` or `npm`, `ESLint`, `PostCSS`
+- Frontend: Next.js, React, TypeScript, Tailwind CSS, Radix UI, shadcn/ui
+- Backend: Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Zod
+- Tooling: npm, TypeScript, GitHub Actions
 
-## Monorepo Structure
+## Repository Structure
+```text
+.
+|- frontend/         # Next.js app
+|- backend/          # Express API
+|- docs/             # Architecture, API, and portfolio docs
+|- .github/          # CI workflow and templates
 ```
-e-commerce-website-design-5/
-  frontend/   # Next.js app
-  backend/    # Express + TypeScript API
-```
-
-## Prerequisites
-- Node.js 18+ recommended
-- MongoDB running locally or a cloud URI
-- `pnpm` or `npm` installed
 
 ## Quick Start
 
 1. Install dependencies
-   - `cd backend && npm install`
-   - `cd ../frontend && npm install`
-
-2. Configure environment (backend)
-   - Copy `backend/.env.example` to `backend/.env`
-   - Set values for your environment
-
-3. Run the apps
-   - Backend: `cd backend && npm run dev` (default `http://localhost:4000`)
-   - Frontend: `cd frontend && npm run dev` (default `http://localhost:3000`)
-
-## Backend Configuration
-
-The API reads the following environment variables:
-
-```
-PORT=4000
-MONGODB_URI=your-mongodb-uri
-JWT_SECRET=replace-with-strong-secret
-JWT_REFRESH_SECRET=replace-with-strong-refresh-secret
-CORS_ORIGIN=http://localhost:3000
-RATE_LIMIT_WINDOW_MS=60000
-RATE_LIMIT_MAX=100
-UPLOAD_DIR=uploads
-ADMIN_DEFAULT_EMAIL=admin@example.com
-ADMIN_DEFAULT_PASSWORD=StrongPassword123!
+```bash
+cd backend && npm ci
+cd ../frontend && npm ci
 ```
 
-- Health check: `GET /health` → `{ status: "ok" }`
-- Main routes are under `/api/*` (auth, products, categories, brands, orders, cart, wishlist, analytics, settings, admin/customers)
+2. Configure environment
+```bash
+cd backend
+cp .env.example .env
+```
 
-### Seeding Data
-Run `npm run seed` in `backend` to populate development data.
+3. Run locally
+```bash
+# terminal 1
+cd backend
+npm run dev
 
-### Build and Start (Production)
-- Build: `cd backend && npm run build`
-- Start: `npm run start`
+# terminal 2
+cd frontend
+npm run dev
+```
 
-## Frontend Notes
-- Next.js app runs at `http://localhost:3000`
-- Uses Tailwind CSS and Radix UI components
-- Admin pages are under `/admin/*`
+4. Open
+- Frontend: `http://localhost:3000`
+- Backend health: `http://localhost:4000/health`
 
-### Scripts
-- `npm run dev` → start dev server
-- `npm run build` → production build
-- `npm run start` → start production server
-- `npm run lint` → lint workspace
+## Environment Variables (Backend)
 
-## Development Tips
-- Keep `backend/.env` secure; only commit `backend/.env.example`
-- See `.gitignore` files in both apps for ignored paths
-- When changing API base URL, update `CORS_ORIGIN` accordingly
+Use `backend/.env.example` as the source of truth.
+
+| Variable | Required | Description |
+|---|---|---|
+| `PORT` | No | API port (default: `4000`) |
+| `MONGODB_URI` | Yes | MongoDB connection string |
+| `JWT_SECRET` | Yes | Access token signing secret |
+| `JWT_REFRESH_SECRET` | Yes | Refresh token signing secret |
+| `CORS_ORIGIN` | Yes | Allowed frontend origin |
+| `RATE_LIMIT_WINDOW_MS` | No | Rate limit window in ms |
+| `RATE_LIMIT_MAX` | No | Max requests per window |
+| `UPLOAD_DIR` | No | Upload path for assets |
+| `ADMIN_DEFAULT_EMAIL` | No | Seeded admin account email |
+| `ADMIN_DEFAULT_PASSWORD` | No | Seeded admin account password |
+
+## Scripts
+
+### Frontend (`frontend`)
+- `npm run dev`
+- `npm run build`
+- `npm run start`
+- `npm run typecheck`
+- `npm run lint` (mapped to typecheck)
+
+### Backend (`backend`)
+- `npm run dev`
+- `npm run build`
+- `npm run start`
+- `npm run typecheck`
+- `npm run seed`
+
+## Documentation
+- Architecture: `docs/ARCHITECTURE.md`
+- API reference: `docs/API_REFERENCE.md`
+- LinkedIn portfolio copy: `docs/LINKEDIN_FEATURE.md`
+
+## Production Notes
+- Never commit real secrets. Keep only `.env.example` in git.
+- This repo is now configured to ignore generated folders and dependencies.
+- CI validates both backend and frontend builds on push and pull request.
 
 ## License
-No license specified. Add one if you plan to distribute.
+MIT License. See `LICENSE`.

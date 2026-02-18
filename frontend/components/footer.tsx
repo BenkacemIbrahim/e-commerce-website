@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="border-t border-border/40 mt-24 bg-secondary/20">
       <div className="container mx-auto px-4 py-16">
@@ -115,7 +117,7 @@ export function Footer() {
           <Link href="/" className="text-2xl font-serif font-semibold">
             BR.
           </Link>
-          <p className="text-sm text-muted-foreground">© 2025 BR. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© {currentYear} BR. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <Link href="/privacy" className="hover:text-foreground transition-colors">
               Privacy

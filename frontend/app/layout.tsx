@@ -18,9 +18,11 @@ const cormorantGaramond = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "BR. - Premium Footwear & Sneakers",
-  description: "Shop the latest collection of premium sneakers and footwear from top brands",
-  generator: "v0.app",
+  title: {
+    default: "AetherCart - Premium Footwear and Sneakers",
+    template: "%s | AetherCart",
+  },
+  description: "Shop premium sneakers and footwear collections from top global brands.",
   icons: {
     icon: [
       {
